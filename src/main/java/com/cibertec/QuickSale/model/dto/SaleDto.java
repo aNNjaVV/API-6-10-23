@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.PrintStream;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @ToString
@@ -22,7 +23,7 @@ public class SaleDto implements Serializable {
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
-    private Date saleDate;
+    private LocalDate saleDate;
 
     private String operationNumber;
     private double total;
@@ -32,5 +33,8 @@ public class SaleDto implements Serializable {
     private Customer customer;
     private Payment payment;
 
+    public LocalDate getSaleDate() {
+        return LocalDate.now();
+    }
 
 }

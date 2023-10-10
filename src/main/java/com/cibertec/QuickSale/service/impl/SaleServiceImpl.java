@@ -1,9 +1,11 @@
 package com.cibertec.QuickSale.service.impl;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.cibertec.QuickSale.model.CodeGenerator;
 import com.cibertec.QuickSale.model.Event;
 import com.cibertec.QuickSale.model.dto.SaleDto;
 import com.cibertec.QuickSale.repo.IEventRepo;
@@ -28,7 +30,7 @@ public class SaleServiceImpl implements ISaleService {
 		Sale sale = Sale.builder()
 				.idSale(s.getIdSale())
 				.saleDate(s.getSaleDate())
-				.operationNumber(s.getOperationNumber())
+				.operationNumber(CodeGenerator.generateCode())
 				.total(s.getTotal())
 				.quantity(s.getQuantity())
 				.status(s.getStatus())
@@ -45,7 +47,7 @@ public class SaleServiceImpl implements ISaleService {
 		Sale sale = Sale.builder()
 				.idSale(s.getIdSale())
 				.saleDate(s.getSaleDate())
-				.operationNumber(s.getOperationNumber())
+				.operationNumber(CodeGenerator.generateCode())
 				.total(s.getTotal())
 				.quantity(s.getQuantity())
 				.status(s.getStatus())
@@ -84,12 +86,12 @@ public class SaleServiceImpl implements ISaleService {
 	}
 
 	@Override
-	public Sale findByDateRange(Date dateStart, Date dateFin) {
+	public List<Sale> findByDateRange(LocalDate dateStart, LocalDate dateFin) {
 		return repo.findByDateRange(dateStart,dateFin);
 	}
 
 	@Override
-	public Sale findSaleByEmailUser(String email) {
+	public List<Sale> findSaleByEmailUser(String email) {
 		return repo.findSaleByEmailUser(email);
 	}
 

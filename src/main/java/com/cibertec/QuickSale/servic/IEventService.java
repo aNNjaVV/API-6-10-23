@@ -18,7 +18,7 @@ public interface IEventService {
 
 	void cambiarEstadoAEliminado(Integer id);
 
-	Event findEventByName(String title);
+	List<Event> findEventByName(String title);
 
-	Event filterEventByCategory(Integer idCategory);
+	List<Event> filterEventByCategory(Integer idCategory);
 }

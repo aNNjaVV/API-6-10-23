@@ -37,7 +37,6 @@ public class DetailsEventsServiceImpl implements IDetailsEventsService{
 	                .idDetailsEvents(de.getIdDetailsEvents())
 	                .description(de.getDescription())
 	                .title(de.getTitle())
-	                .link(de.getLink())
 	                .comments(de.getComments())
 	                .urlImageRef(de.getUrlImageRef()) // Asignar la cadena base64 decodificada
 	                .status(de.getStatus())
@@ -53,7 +52,6 @@ public class DetailsEventsServiceImpl implements IDetailsEventsService{
 				.idDetailsEvents(de.getIdDetailsEvents())
 				.description(de.getDescription())
 				.title(de.getTitle())
-				.link(de.getLink())
 				.comments(de.getComments())
 				.urlImageRef(de.getUrlImageRef())
 				.status(de.getStatus())

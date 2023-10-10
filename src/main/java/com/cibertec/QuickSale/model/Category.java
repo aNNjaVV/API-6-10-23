@@ -7,8 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Builder
 @AllArgsConstructor
@@ -23,27 +22,5 @@ public class Category {
 	private String description;
 	private String status;
 
-	public int getIdCategory() {
-		return idCategory;
-	}
 
-	public void setIdCategory(int idCategory) {
-		this.idCategory = idCategory;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 }

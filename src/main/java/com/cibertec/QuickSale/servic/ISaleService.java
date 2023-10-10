@@ -1,5 +1,6 @@
 package com.cibertec.QuickSale.servic;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +21,9 @@ public interface ISaleService {
 
 	void cambiarEstadoAEliminado(Integer id);
 
-	Sale findByDateRange(Date dateStart, Date dateFin);
+	List<Sale> findByDateRange(LocalDate dateStart, LocalDate dateFin);
 
-	Sale findSaleByEmailUser(String email);
+	List<Sale> findSaleByEmailUser(String email);
 
 
 

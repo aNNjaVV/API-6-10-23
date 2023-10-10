@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,84 +32,5 @@ public class Event {
 	private Category category;
 
 
-	public int getIdEvent() {
-		return idEvent;
-	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public Date getDateEvent() {
-		return dateEvent;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public String getPlace() {
-		return place;
-	}
-
-	public int getTicketsQuantity() {
-		return ticketsQuantity;
-	}
-
-	public double getUnitPrice() {
-		return unitPrice;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-
-	public void setIdEvent(int idEvent) {
-		this.idEvent = idEvent;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void setDateEvent(Date dateEvent) {
-		this.dateEvent = dateEvent;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public void setPlace(String place) {
-		this.place = place;
-	}
-
-	public void setTicketsQuantity(int ticketsQuantity) {
-		this.ticketsQuantity = ticketsQuantity;
-	}
-
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 }

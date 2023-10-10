@@ -1,6 +1,7 @@
 package com.cibertec.QuickSale.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -9,8 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Builder
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "sale")
@@ -22,7 +22,7 @@ public class Sale {
 
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat(pattern = "dd-MM-yyyy")
-	private Date saleDate;
+	private LocalDate saleDate;
 	private String operationNumber;
 	private double total;
 	private int quantity;
@@ -43,39 +43,5 @@ public class Sale {
 		private Payment payment;
 
 
-	public void setIdSale(int idSale) {
-		this.idSale = idSale;
-	}
 
-	public void setSaleDate(Date saleDate) {
-		this.saleDate = saleDate;
-	}
-
-	public void setOperationNumber(String operationNumber) {
-		this.operationNumber = operationNumber;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public void setEvent(Event event) {
-		this.event = event;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public void setPayment(Payment payment) {
-		this.payment = payment;
-	}
 }

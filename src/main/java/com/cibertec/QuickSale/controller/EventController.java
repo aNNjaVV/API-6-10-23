@@ -196,7 +196,7 @@ public class EventController {
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/find/{title}")
     public ResponseEntity<?> findEventByName(@PathVariable("title") String title) {
-        Event event = service.findEventByName(title);
+        List<Event> event = service.findEventByName(title);
 
         if (event == null) {
             return new ResponseEntity<>(
@@ -211,18 +211,7 @@ public class EventController {
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("")
-                            .object(EventDto.builder()
-                                    .idEvent(event.getIdEvent())
-                                    .title(event.getTitle())
-                                    .description(event.getDescription())
-                                    .dateEvent(event.getDateEvent())
-                                    .image(event.getImage())
-                                    .place(event.getPlace())
-                                    .ticketsQuantity(event.getTicketsQuantity())
-                                    .unitPrice(event.getUnitPrice())
-                                    .status(event.getStatus())
-                                    .category(event.getCategory())
-                                    .build())
+                            .object(event)
                             .success(true)
                             .build()
                     , HttpStatus.OK);
@@ -234,38 +223,27 @@ public class EventController {
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/filter/{idCategory}")
     public ResponseEntity<?> filterEventByCategory(@PathVariable("idCategory") Integer idCategory) {
-        Event event = service.filterEventByCategory(idCategory);
+        List<Event> event = service.filterEventByCategory(idCategory);
 
-        if (event == null) {
+        if (event.isEmpty()) {
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("Error")
                             .object(null)
-                            .success(false) // Establecer success en false
-                            .build()
-                    , HttpStatus.NOT_FOUND);
-
+                            .success(false)
+                            .build(),
+                    HttpStatus.NOT_FOUND
+            );
         } else {
+
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("")
-                            .object(EventDto.builder()
-                                    .idEvent(event.getIdEvent())
-                                    .title(event.getTitle())
-                                    .description(event.getDescription())
-                                    .dateEvent(event.getDateEvent())
-                                    .image(event.getImage())
-                                    .place(event.getPlace())
-                                    .ticketsQuantity(event.getTicketsQuantity())
-                                    .unitPrice(event.getUnitPrice())
-                                    .status(event.getStatus())
-                                    .category(event.getCategory())
-                                    .build())
+                            .object(event)
                             .success(true)
-                            .build()
-                    , HttpStatus.OK);
-
-
+                            .build(),
+                    HttpStatus.OK
+            );
         }
     }
 }

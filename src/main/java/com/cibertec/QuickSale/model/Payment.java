@@ -9,8 +9,7 @@ import lombok.*;
 
 @Entity
 @Builder
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "payment")
@@ -24,15 +23,4 @@ public class Payment {
 	private String status;
 
 
-	public void setIdPayment(int idPayment) {
-		this.idPayment = idPayment;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 }

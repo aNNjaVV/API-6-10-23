@@ -1,5 +1,6 @@
 package com.cibertec.QuickSale.controller;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -198,8 +199,8 @@ public class SaleController {
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/find/{dateStart}/{dateFin}")
-    public ResponseEntity<?>  findByDateRange(@PathVariable("dateStart") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateStart, @PathVariable("dateFin") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dateFin) {
-        Sale sale = service.findByDateRange(dateStart, dateFin);
+    public ResponseEntity<?> findByDateRange(@PathVariable("dateStart") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateStart, @PathVariable("dateFin") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateFin) {
+        List<Sale> sale = service.findByDateRange(dateStart, dateFin);
         if (sale == null) {
             return new ResponseEntity<>(
                     MensajeResponse.builder()
@@ -223,7 +224,7 @@ public class SaleController {
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/find/{email}")
     public ResponseEntity<?> findSaleByEmailUser(@PathVariable("email") String email) {
-        Sale sale = service.findSaleByEmailUser(email);
+        List<Sale> sale = service.findSaleByEmailUser(email);
         if (sale == null) {
             return new ResponseEntity<>(MensajeResponse.builder()
                     .mensaje("No hay registros para este usuario")
@@ -235,14 +236,7 @@ public class SaleController {
         } else {
             return new ResponseEntity<>(MensajeResponse.builder()
                     .mensaje("")
-                    .object(SaleEmailUserResponse.builder()
-                            .operationNumber(sale.getOperationNumber())
-                            .title(sale.getEvent().getTitle())
-                            .quantity(sale.getQuantity())
-                            .total(sale.getTotal())
-                            .saleDate(sale.getSaleDate())
-                            .dateEvent(sale.getEvent().getDateEvent())
-                            .build())
+                    .object(sale)
                     .success(true) // Establecer success en false
                     .build()
                     , HttpStatus.OK);

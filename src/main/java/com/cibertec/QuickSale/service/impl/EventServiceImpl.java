@@ -80,12 +80,12 @@ public class EventServiceImpl implements IEventService {
 	}
 
 	@Override
-	public Event findEventByName(String title) {
+	public  List<Event> findEventByName(String title) {
 		return repo.findEventByName(title);
 	}
 
 	@Override
-	public Event filterEventByCategory(Integer idCategory) {
+	public  List<Event> filterEventByCategory(Integer idCategory) {
 		return repo.filterEventByCategory(idCategory);
 	}
 
