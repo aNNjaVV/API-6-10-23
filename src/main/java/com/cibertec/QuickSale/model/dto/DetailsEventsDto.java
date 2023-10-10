@@ -15,7 +15,6 @@ public class DetailsEventsDto implements Serializable {
 
     private String description;
     private String title;
-    private String link;
     private String comments;
     private String urlImageRef;
     private String status;

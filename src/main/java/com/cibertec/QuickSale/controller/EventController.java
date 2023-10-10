@@ -196,29 +196,43 @@ public class EventController {
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/find/{title}")
     public ResponseEntity<?> findEventByName(@PathVariable("title") String title) {
-        List<Event> event = service.findEventByName(title);
+        List<Event> events = service.findEventByName(title);
 
-        if (event == null) {
+        if (events.isEmpty()) {
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("Evento no encontrado o no disponible")
                             .object(null)
-                            .success(false) // Establecer success en false
-                            .build()
-                    , HttpStatus.NOT_FOUND);
-
+                            .success(false)
+                            .build(),
+                    HttpStatus.NOT_FOUND
+            );
         } else {
+            // En este ejemplo, se asume que solo se devolverá el primer evento encontrado
+            Event event = events.get(0);
+
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("")
-                            .object(event)
+                            .object(EventDto.builder()
+                                    .idEvent(event.getIdEvent())
+                                    .title(event.getTitle())
+                                    .description(event.getDescription())
+                                    .dateEvent(event.getDateEvent())
+                                    .image(event.getImage())
+                                    .place(event.getPlace())
+                                    .ticketsQuantity(event.getTicketsQuantity())
+                                    .unitPrice(event.getUnitPrice())
+                                    .status(event.getStatus())
+                                    .category(event.getCategory())
+                                    .build())
                             .success(true)
-                            .build()
-                    , HttpStatus.OK);
-
-
+                            .build(),
+                    HttpStatus.OK
+            );
         }
     }
+
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/filter/{idCategory}")
