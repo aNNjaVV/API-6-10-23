@@ -37,4 +37,11 @@ public class SaleDto implements Serializable {
         return LocalDate.now();
     }
 
+    public double getTotal() {
+        return event.getUnitPrice()*quantity;
+    }
+
+    public String getStatus() {
+        return "Activo";
+    }
 }

@@ -24,5 +24,9 @@ public class EventDto implements Serializable {
     private String status;
     private Category category;
 
+    public String getStatus() {
+        return "Activo";
+    }
+
 
 }

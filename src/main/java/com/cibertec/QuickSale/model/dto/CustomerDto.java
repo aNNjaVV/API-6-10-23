@@ -19,6 +19,10 @@ public class CustomerDto implements Serializable {
     private String status;
     private String roles;
 
+    public String getStatus() {
+        return "Activo";
+    }
+
 
 
 

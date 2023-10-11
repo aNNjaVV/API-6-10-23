@@ -20,5 +20,9 @@ public class DetailsEventsDto implements Serializable {
     private String status;
     private Event event;
 
+    public String getStatus() {
+        return "Activo";
+    }
+
 
 }
