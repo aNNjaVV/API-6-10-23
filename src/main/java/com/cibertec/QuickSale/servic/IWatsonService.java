@@ -14,5 +14,4 @@ public interface IWatsonService {
 	List<Watson> listar();
 	Watson listarPorId(Integer id);
 	void eliminar(Integer id);
-	//void cambiarEstadoAEliminado(Integer id);
 }
