@@ -207,25 +207,12 @@ public class EventController {
                             .build(),
                     HttpStatus.NOT_FOUND
             );
-        } else {
-            // En este ejemplo, se asume que solo se devolverá el primer evento encontrado
-            Event event = events.get(0);
+        }else {
 
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("")
-                            .object(EventDto.builder()
-                                    .idEvent(event.getIdEvent())
-                                    .title(event.getTitle())
-                                    .description(event.getDescription())
-                                    .dateEvent(event.getDateEvent())
-                                    .image(event.getImage())
-                                    .place(event.getPlace())
-                                    .ticketsQuantity(event.getTicketsQuantity())
-                                    .unitPrice(event.getUnitPrice())
-                                    .status(event.getStatus())
-                                    .category(event.getCategory())
-                                    .build())
+                            .object(events)
                             .success(true)
                             .build(),
                     HttpStatus.OK
