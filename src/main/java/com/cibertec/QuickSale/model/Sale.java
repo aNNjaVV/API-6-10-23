@@ -42,6 +42,10 @@ public class Sale {
     @JoinColumn(name = "id_payment", referencedColumnName = "idPayment")
 		private Payment payment;
 
+	public double getTotal() {
+		return event.getUnitPrice()*quantity;
+	}
+
 
 
 }

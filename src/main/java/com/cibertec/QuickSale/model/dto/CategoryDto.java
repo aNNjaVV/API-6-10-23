@@ -14,4 +14,8 @@ public class CategoryDto implements Serializable {
     private int idCategory;
     private String description;
     private String status;
+
+    public String getStatus() {
+        return "Activo";
+    }
 }

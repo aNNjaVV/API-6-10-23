@@ -15,5 +15,8 @@ public class PaymentDto implements Serializable {
     private String name;
     private String status;
 
+    public String getStatus() {
+        return "Activo";
+    }
 
 }

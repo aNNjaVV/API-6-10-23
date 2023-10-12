@@ -22,8 +22,6 @@ public class SaleServiceImpl implements ISaleService {
 	@Autowired
 	ISaleRepo repo;
 
-	@Autowired
-	private IEventRepo eventRepo;
 
 	@Override
 	public Sale registrar(SaleDto s) {
