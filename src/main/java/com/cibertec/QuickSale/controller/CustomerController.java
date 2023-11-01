@@ -32,6 +32,7 @@ public class CustomerController {
         if (email.equals("admin@hotmail.com") && password.equals("admin")) {
             return new ResponseEntity<>(
                     AdminResponse.builder()
+                            .id(0)
                             .mensaje("Bievenido Admin")
                             .name("admin")
                             .roles("admin")
@@ -44,6 +45,7 @@ public class CustomerController {
             return new ResponseEntity<>(
                     CustomerResponse.builder()
                             .mensaje("Inicio de sesion Exitoso")
+                            .id(authenticated.getIdCustomer())
                             .name(authenticated.getFullName())
                             .roles(authenticated.getRoles())
                             .success(true)

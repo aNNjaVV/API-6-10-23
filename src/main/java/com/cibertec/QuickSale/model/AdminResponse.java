@@ -9,6 +9,7 @@ import java.io.Serializable;
 @Builder
 public class AdminResponse implements Serializable {
 
+    private int id;
     private String mensaje;
     private String name;
     private boolean success;
