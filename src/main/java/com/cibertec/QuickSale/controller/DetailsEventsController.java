@@ -182,4 +182,40 @@ public class DetailsEventsController {
 					HttpStatus.METHOD_NOT_ALLOWED
 			);
 		}	}
+	
+
+	@CrossOrigin(origins = "http://localhost:4200/")
+	@GetMapping("/findxidEvent/{idEvent}")
+	public ResponseEntity<?> filterxIdEvent(@PathVariable("idEvent") Integer idEvent) {
+		DetailsEvents detailsEvents = service.filterxIdEvent(idEvent);
+
+		if(detailsEvents == null) {
+			return  new ResponseEntity<>(
+					MensajeResponse.builder()
+							.mensaje("Codigo no encontrado")
+							.object(null)
+							.success(false) // Establecer success en false
+							.build()
+					, HttpStatus.NOT_FOUND);
+
+		} else {
+			return new ResponseEntity<>(
+					MensajeResponse.builder()
+							.mensaje("")
+							.object(DetailsEventsDto.builder()
+									.idDetailsEvents(detailsEvents.getIdDetailsEvents())
+									.description(detailsEvents.getDescription())
+									.title(detailsEvents.getTitle())
+									.comments(detailsEvents.getComments())
+									.urlImageRef(detailsEvents.getUrlImageRef())
+									.status(detailsEvents.getStatus())
+									.event(detailsEvents.getEvent())
+									.build())
+							.success(true)
+							.build()
+					, HttpStatus.OK);
+
+
+		}
+	}
 }

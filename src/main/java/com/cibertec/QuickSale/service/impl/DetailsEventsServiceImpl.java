@@ -76,7 +76,10 @@ public class DetailsEventsServiceImpl implements IDetailsEventsService{
 		repo.deleteById(id);
 	}
 
-
+	@Override
+	public DetailsEvents filterxIdEvent(int idEvent) {
+		return repo.filterxIdEvent(idEvent);
+	}
 
 	@Override
 	public void cambiarEstadoAEliminado(Integer id) {

@@ -17,4 +17,5 @@ public interface IDetailsEventsService {
 	void eliminar(Integer id);
 
 	void cambiarEstadoAEliminado(Integer id);
+	DetailsEvents filterxIdEvent(int idEvent);
 }
