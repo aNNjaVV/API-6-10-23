@@ -23,15 +23,6 @@ public class DetailsEventsServiceImpl implements IDetailsEventsService{
 
 	 @Override
 	    public DetailsEvents registrar(DetailsEventsDto de) {
-	        // Decodificar la cadena base64 y asignarla al atributo urlImageRef
-	        String base64Data = de.getUrlImageRef(); // Obtener la cadena base64 desde el DTO
-	        
-	        if (base64Data != null && !base64Data.isEmpty()) {
-	            byte[] decodedImage = Base64.getDecoder().decode(base64Data);
-	            String imageInBase64 = new String(decodedImage);
-	            de.setUrlImageRef(imageInBase64);
-	        }
-
 	        // Crear la entidad DetailsEvents y guardarla en la base de datos
 	        DetailsEvents detailsEvents = DetailsEvents.builder()
 	                .idDetailsEvents(de.getIdDetailsEvents())
@@ -42,7 +33,6 @@ public class DetailsEventsServiceImpl implements IDetailsEventsService{
 	                .status(de.getStatus())
 	                .event(de.getEvent())
 	                .build();
-
 	        return repo.save(detailsEvents);
 	    }
 

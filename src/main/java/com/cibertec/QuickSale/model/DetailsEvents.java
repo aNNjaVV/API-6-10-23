@@ -1,6 +1,7 @@
 package com.cibertec.QuickSale.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Entity
@@ -14,11 +15,20 @@ public class DetailsEvents {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idDetailsEvents;
-	
+
+	@NotEmpty
 	private String description;
+
+	@NotEmpty
 	private String title;
+
+	@NotEmpty
 	private String comments;
+
+	@NotEmpty
 	private String urlImageRef;
+
+
 	private String status;
 
 

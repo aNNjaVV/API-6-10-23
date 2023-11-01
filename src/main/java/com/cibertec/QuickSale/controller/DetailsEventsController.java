@@ -161,7 +161,7 @@ public class DetailsEventsController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200/")
-	@PutMapping("/eliminar/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> cambiarEstadoAEliminado(@PathVariable("id") Integer id) {
 		try {
 			service.cambiarEstadoAEliminado(id);

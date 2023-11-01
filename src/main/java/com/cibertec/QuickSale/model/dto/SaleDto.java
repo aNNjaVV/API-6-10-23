@@ -4,6 +4,8 @@ import com.cibertec.QuickSale.model.Customer;
 import com.cibertec.QuickSale.model.Event;
 import com.cibertec.QuickSale.model.Payment;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -25,8 +27,13 @@ public class SaleDto implements Serializable {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate saleDate;
 
+    @NotEmpty
     private String operationNumber;
+
+    @NotNull
     private double total;
+
+    @NotNull
     private int quantity;
     private String status;
     private Event event;
