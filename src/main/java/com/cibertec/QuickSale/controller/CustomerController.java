@@ -1,5 +1,6 @@
 package com.cibertec.QuickSale.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cibertec.QuickSale.model.*;
@@ -68,7 +69,8 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<?> listar() {
         List<Customer> lista = service.listar();
-        if (lista == null) {
+
+        if (lista.isEmpty()) {
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("No hay registros")

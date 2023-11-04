@@ -1,6 +1,7 @@
 package com.cibertec.QuickSale.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +30,9 @@ public class SaleController {
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping
     public ResponseEntity<?> listar() {
+
         List<Sale> lista = service.listar();
+
         if (lista == null) {
             return new ResponseEntity<>(
                     MensajeResponse.builder()

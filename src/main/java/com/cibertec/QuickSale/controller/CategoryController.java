@@ -1,7 +1,9 @@
 package com.cibertec.QuickSale.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.cibertec.QuickSale.model.Event;
 import com.cibertec.QuickSale.model.response.MensajeResponse;
 import com.cibertec.QuickSale.model.dto.CategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,15 @@ public class CategoryController {
 	@GetMapping
 	public ResponseEntity<?> listar() {
 		List<Category> lista = service.listar();
-		if (lista == null) {
+		List<Category> listActive = new ArrayList<>();
+
+		for(Category category:lista){
+			if("Activo".equals(category.getStatus())){
+				listActive.add(category);
+			}
+		}
+
+		if (lista.isEmpty()) {
 			return new ResponseEntity<>(
 					MensajeResponse.builder()
 							.mensaje("No hay registros")
@@ -37,7 +47,7 @@ public class CategoryController {
 			return new ResponseEntity<>(
 					MensajeResponse.builder()
 							.mensaje("")
-							.object(lista)
+							.object(listActive)
 							.success(true) // Establecer success en true
 							.build(),
 					HttpStatus.OK

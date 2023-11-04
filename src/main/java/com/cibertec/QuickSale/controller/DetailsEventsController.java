@@ -1,7 +1,9 @@
 package com.cibertec.QuickSale.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.cibertec.QuickSale.model.Event;
 import com.cibertec.QuickSale.model.response.MensajeResponse;
 import com.cibertec.QuickSale.model.dto.DetailsEventsDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,15 @@ public class DetailsEventsController {
 	@GetMapping
 	public ResponseEntity<?> listar() {
 		List<DetailsEvents> lista = service.listar();
-		if (lista == null) {
+		List<DetailsEvents> listActive = new ArrayList<>();
+
+		for(DetailsEvents detailsEvents:lista){
+			if("Activo".equals(detailsEvents.getStatus())){
+				listActive.add(detailsEvents);
+			}
+		}
+
+		if (lista.isEmpty()) {
 			return new ResponseEntity<>(
 					MensajeResponse.builder()
 							.mensaje("No hay registros")
@@ -36,7 +46,7 @@ public class DetailsEventsController {
 			return new ResponseEntity<>(
 					MensajeResponse.builder()
 							.mensaje("")
-							.object(lista)
+							.object(listActive)
 							.success(true) // Establecer success en true
 							.build()
 					, HttpStatus.OK);
