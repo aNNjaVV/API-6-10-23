@@ -66,6 +66,7 @@ public class CustomerController {
 
 
 
+    @CrossOrigin(origins = "http://localhost:4200/")
     @PutMapping("/changePassword/{email}/{password}/{nuevaContraseña}")
     public ResponseEntity<?> changePassword(@PathVariable String email, @PathVariable String password, @PathVariable String nuevaContraseña) {
         Boolean result = service.changePassword(email,password,nuevaContraseña);
