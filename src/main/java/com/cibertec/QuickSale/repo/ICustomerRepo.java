@@ -15,5 +15,5 @@ public interface ICustomerRepo extends JpaRepository<Customer, Integer> {
     Customer login(@Param("email") String email, @Param("password") String password);
 
 
-
+    Customer findByEmail(String email);
 }

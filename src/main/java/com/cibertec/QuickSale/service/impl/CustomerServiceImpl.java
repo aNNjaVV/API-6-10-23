@@ -3,7 +3,6 @@ package com.cibertec.QuickSale.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import com.cibertec.QuickSale.model.Category;
 import com.cibertec.QuickSale.model.dto.CustomerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,6 +80,23 @@ public class CustomerServiceImpl implements ICustomerService {
 		return repo.login(email,password);
 	}
 
+	@Override
+	public Customer findByEmail(String email) {
+		return repo.findByEmail(email);
+	}
+
+	@Override
+	public boolean changePassword(String email, String password, String nuevaContraseña) {
+		Customer customer = repo.findByEmail(email);
+
+		if (customer != null && customer.getPassword().equals(password)) {
+			customer.setPassword(nuevaContraseña);
+			repo.save(customer);
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 
 }

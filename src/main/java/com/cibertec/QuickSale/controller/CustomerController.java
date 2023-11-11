@@ -1,6 +1,5 @@
 package com.cibertec.QuickSale.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.cibertec.QuickSale.model.*;
@@ -64,6 +63,37 @@ public class CustomerController {
         }
 
     }
+
+
+
+    @PutMapping("/changePassword/{email}/{password}/{nuevaContraseña}")
+    public ResponseEntity<?> changePassword(@PathVariable String email, @PathVariable String password, @PathVariable String nuevaContraseña) {
+        Boolean result = service.changePassword(email,password,nuevaContraseña);
+
+        if(result != null && result){
+            return new ResponseEntity<>(
+                    MensajeResponse.builder()
+                            .mensaje("Contraseña cambiada con éxito")
+                            .object(null)
+                            .success(true)
+                            .build(),
+                    HttpStatus.OK
+            );
+        }else {
+            return new ResponseEntity<>(
+                    MensajeResponse.builder()
+                            .mensaje("Error verifica los datos proporcionados")
+                            .object(null)
+                            .success(false)
+                            .build(),
+                    HttpStatus.BAD_REQUEST
+            );
+
+        }
+
+
+    }
+
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping

@@ -7,7 +7,7 @@ import java.sql.Date;
 
 @Data
 @Builder
-public class SaleEmailUserResponse {
+public class SaleEmailUserResponse  {
     private String operationNumber;
     private String title;
     private int quantity;
