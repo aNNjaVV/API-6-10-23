@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cibertec.QuickSale.model.*;
 import com.cibertec.QuickSale.model.dto.CustomerDto;
+import com.cibertec.QuickSale.model.response.ChangePasswordResponse;
 import com.cibertec.QuickSale.model.response.CustomerResponse;
 import com.cibertec.QuickSale.model.response.MensajeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,11 +68,11 @@ public class CustomerController {
 
 
     @CrossOrigin(origins = "http://localhost:4200/")
-    @PutMapping("/changePassword/{email}/{password}/{nuevaContraseña}")
-    public ResponseEntity<?> changePassword(@PathVariable String email, @PathVariable String password, @PathVariable String nuevaContraseña) {
-        Boolean result = service.changePassword(email,password,nuevaContraseña);
+    @PutMapping("/changePassword")
+    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordResponse changePasswordResponse) {
 
-        if(result != null && result){
+
+        if(service.changePassword(changePasswordResponse.getEmail(), changePasswordResponse.getCurrentPassword(), changePasswordResponse.getNewPassword())){
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("Contraseña cambiada con éxito")
@@ -80,7 +81,7 @@ public class CustomerController {
                             .build(),
                     HttpStatus.OK
             );
-        }else {
+        }else{
             return new ResponseEntity<>(
                     MensajeResponse.builder()
                             .mensaje("Error verifica los datos proporcionados")
@@ -91,7 +92,6 @@ public class CustomerController {
             );
 
         }
-
 
     }
 
