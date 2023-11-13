@@ -27,7 +27,7 @@ public class SaleController {
     @Autowired
     ISaleService service;
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @GetMapping
     public ResponseEntity<?> listar() {
 
@@ -52,7 +52,7 @@ public class SaleController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @GetMapping("/{id}")
     public ResponseEntity<?> listarPorId(@PathVariable("id") Integer id) {
         Sale sale = service.listarPorId(id);
@@ -89,7 +89,7 @@ public class SaleController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @PostMapping
     public ResponseEntity<?> registrar(@RequestBody SaleDto se) {
         Sale saleSave = null;
@@ -122,7 +122,7 @@ public class SaleController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @PutMapping
     public ResponseEntity<?> modificar(@RequestBody SaleDto se) {
         Sale saleUpdate = null;
@@ -155,7 +155,7 @@ public class SaleController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -176,7 +176,7 @@ public class SaleController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> cambiarEstadoAEliminado(@PathVariable("id") Integer id) {
         try {
@@ -200,7 +200,7 @@ public class SaleController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @GetMapping("/find/{dateStart}/{dateFin}")
     public ResponseEntity<?> findByDateRange(@PathVariable("dateStart") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateStart, @PathVariable("dateFin") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate dateFin) {
         List<Sale> sale = service.findByDateRange(dateStart, dateFin);
@@ -224,7 +224,7 @@ public class SaleController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @GetMapping("/find/{email}")
     public ResponseEntity<?> findSaleByEmailUser(@PathVariable("email") String email) {
         List<Sale> sale = service.findSaleByEmailUser(email);

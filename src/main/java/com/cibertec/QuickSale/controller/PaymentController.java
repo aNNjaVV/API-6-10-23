@@ -20,7 +20,7 @@ public class PaymentController {
 	@Autowired
 	IPaymentService service;
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@GetMapping
 	public ResponseEntity<?> listar() {
 		List<Payment> lista = service.listar();
@@ -43,7 +43,7 @@ public class PaymentController {
 			}
 		}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@GetMapping("/{id}")
 	public ResponseEntity<?> listarPorId(@PathVariable("id") Integer id) {
 		Payment p = service.listarPorId(id);
@@ -75,7 +75,7 @@ public class PaymentController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@PostMapping
 	public ResponseEntity<?> registrar(@RequestBody PaymentDto pa) {
 		Payment paymentSave = null;
@@ -103,7 +103,7 @@ public class PaymentController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@PutMapping
 	public ResponseEntity<?> modificar(@RequestBody PaymentDto pa) {
 		Payment paymentUpdate = null;
@@ -131,7 +131,7 @@ public class PaymentController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable("id")Integer id) {
 		try {
@@ -152,7 +152,7 @@ public class PaymentController {
 	}
 
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> cambiarEstadoAEliminado(@PathVariable("id") Integer id) {
 		try {

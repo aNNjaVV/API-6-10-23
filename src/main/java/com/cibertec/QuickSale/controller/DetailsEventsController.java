@@ -22,7 +22,7 @@ public class DetailsEventsController {
 	@Autowired
 	IDetailsEventsService service;
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@GetMapping
 	public ResponseEntity<?> listar() {
 		List<DetailsEvents> lista = service.listar();
@@ -53,7 +53,7 @@ public class DetailsEventsController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@GetMapping("/{id}")
 	public ResponseEntity<?> listarPorId(@PathVariable("id") Integer id) {
 		DetailsEvents detailsEvents = service.listarPorId(id);
@@ -88,7 +88,7 @@ public class DetailsEventsController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@PostMapping
 	public ResponseEntity<?> registrar(@RequestBody DetailsEventsDto de) {
 		DetailsEvents detailsEventsSave = null;
@@ -119,7 +119,7 @@ public class DetailsEventsController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@PutMapping
 	public ResponseEntity<?> modificar(@RequestBody DetailsEventsDto de) {
 		DetailsEvents detailsEventsUpdate = null;
@@ -150,7 +150,7 @@ public class DetailsEventsController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable("id")Integer id) {
 		try {
@@ -170,7 +170,7 @@ public class DetailsEventsController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> cambiarEstadoAEliminado(@PathVariable("id") Integer id) {
 		try {
@@ -194,7 +194,7 @@ public class DetailsEventsController {
 		}	}
 	
 
-	@CrossOrigin(origins = "http://localhost:4200/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
 	@GetMapping("/findxidEvent/{idEvent}")
 	public ResponseEntity<?> filterxIdEvent(@PathVariable("idEvent") Integer idEvent) {
 		DetailsEvents detailsEvents = service.filterxIdEvent(idEvent);

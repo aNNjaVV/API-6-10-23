@@ -22,7 +22,7 @@ public class CustomerController {
     @Autowired
     ICustomerService service;
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody CustomerDto customerDto) {
         String email = customerDto.getEmail();
@@ -67,7 +67,7 @@ public class CustomerController {
 
 
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @PutMapping("/changePassword")
     public ResponseEntity<?> changePassword(@RequestBody ChangePasswordResponse changePasswordResponse) {
 
@@ -96,7 +96,7 @@ public class CustomerController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @GetMapping
     public ResponseEntity<?> listar() {
         List<Customer> lista = service.listar();
@@ -120,7 +120,7 @@ public class CustomerController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @GetMapping("/{id}")
     public ResponseEntity<?> listarPorId(@PathVariable("id") Integer id) {
         Customer customer = service.listarPorId(id);
@@ -157,7 +157,7 @@ public class CustomerController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @PostMapping
     public ResponseEntity<?> registrar(@RequestBody CustomerDto cu) {
         Customer customerSave = null;
@@ -190,7 +190,7 @@ public class CustomerController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @PutMapping
     public ResponseEntity<?> modificar(@RequestBody CustomerDto cu) {
         Customer customerUpdate = null;
@@ -222,7 +222,7 @@ public class CustomerController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") Integer id) {
         try {
@@ -243,7 +243,7 @@ public class CustomerController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:4200/")
+    @CrossOrigin(origins = "https://angularquicksale.web.app/#/")
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> cambiarEstadoAEliminado(@PathVariable("id") Integer id) {
         try {
