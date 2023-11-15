@@ -22,7 +22,7 @@ public class CategoryController {
 	@Autowired
 	ICategoryService service;
 
-	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/")
 	@GetMapping
 	public ResponseEntity<?> listar() {
 		List<Category> lista = service.listar();
@@ -55,7 +55,7 @@ public class CategoryController {
 		}
 	}
 
-	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/")
 	@GetMapping("/{id}")
 	public ResponseEntity<?> listarPorId(@PathVariable("id") Integer id) {
 		Category category = service.listarPorId(id);
@@ -86,7 +86,7 @@ public class CategoryController {
 		}
 	}
 
-	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/")
 	@PostMapping
 	public ResponseEntity<?> registrar(@RequestBody CategoryDto c) {
 		Category categorySave = null;
@@ -113,7 +113,7 @@ public class CategoryController {
 		}
 	}
 
-	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/")
 	@PutMapping
 	public ResponseEntity<?> modificar(@RequestBody CategoryDto c) {
 		Category categoryUpdate = null;
@@ -140,7 +140,7 @@ public class CategoryController {
 		}
 	}
 
-	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> eliminar(@PathVariable("id")Integer id) {
 		try {
@@ -160,7 +160,7 @@ public class CategoryController {
 		}
 	}
 
-	@CrossOrigin(origins = "https://angularquicksale.web.app/#/")
+	@CrossOrigin(origins = "https://angularquicksale.web.app/")
 	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<?> cambiarEstadoAEliminado(@PathVariable("id") Integer id) {
 		try {
